@@ -15,7 +15,8 @@ class LogisticRegression:
         self.weights = np.zeros(n_features)
         self.bias = 0
         
-        for _ in range(self.n_iters):
+        for i in range(self.n_iters):
+            #  print(i)
              y_pred = sigmoid(np.dot(X,self.weights)+self.bias)
              dw = (1/n_samples)*2*np.dot(X.T,(y_pred-y))
              db = (1/n_samples)*2*np.sum(y_pred-y)
