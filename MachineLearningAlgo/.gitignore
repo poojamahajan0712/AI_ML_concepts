@@ -1,1 +1,4 @@
 requirement.txt
+KNN/__pycache__/knn.cpython-311.pyc
+Linear_Regression/__pycache__/LinearRegression.cpython-311.pyc
+LogisticRegression/__pycache__/LogisticRegression.cpython-311.pyc
