@@ -4,8 +4,9 @@ def euclidean_dist(x1,x2):
     return np.sqrt(np.sum((x1-x2)**2))
 
 class KNN:
-    def __init__(self,k):
+    def __init__(self,k,is_regression=False):
         self.k = k
+        self.is_regression = is_regression
         self.X_train = None
         self.y_train = None
     
@@ -24,11 +25,14 @@ class KNN:
         #k closest y corresponding to above k closest x train distances
         closest_y = [self.y_train[i] for i in closest_neighbours_indices]
         
-        ## majority vote
-        counter = {}
-        for v in closest_y:
-            counter[v] = counter.get(v,0)+1
-        return max(counter,key=counter.get)
+        if not self.is_regression:
+            ## majority vote
+            counter = {}
+            for v in closest_y:
+                counter[v] = counter.get(v,0)+1
+            return max(counter,key=counter.get)
+        else:
+            return np.round(np.mean(closest_y),3)
 
         
 
