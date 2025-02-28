@@ -17,7 +17,9 @@ class SVM:
 
         ## change labels of y=0 to y=-1 
         y = np.where(y==0,-1,y)
- 
+        
+        ## when the preiction is correct i.e. y_ac * y_pr >=1 , then hard margin maximisation i.e. min w, else both hard margin + hing loss is minimised i.e max(0,1-y_ac*y_pr)
+        ## here y_pr = w*x-b
         for it in range(self.n_iters):
             for i,x in enumerate(X):
                 cond = y[i] * (np.dot(x,self.w) - self.b) ## calculating for each point
